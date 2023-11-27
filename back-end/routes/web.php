@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/brand', function () {
+//     return view('hello word');
+// });
+// Route::post('/', function () {
+//     return view('welcome');
+// });
+// Route::get('admin/login', [AuthController::class, 'login'])->route("admin.login");
+Route::get('/brand', [BrandController::class, 'index']);

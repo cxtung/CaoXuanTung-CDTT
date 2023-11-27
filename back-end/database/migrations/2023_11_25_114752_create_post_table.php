@@ -11,9 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('db.post', function (Blueprint $table) {
+        Schema::create('db_post', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedInteger('topic_id')->nullable();
+            $table->string('title', 1000);
+            $table->string('slug', 1000);
+            $table->text('detail');
+            $table->string('description', 255);
+            $table->string('image', 255);
+            $table->string('type', 255);
+            $table->timestamps(); //created_at, updated_at
+            $table->unsignedInteger('created_by')->default(1);
+            $table->unsignedInteger('updated_by')->nullable();
+            $table->unsignedTinyInteger('status')->default(2);
         });
     }
 
@@ -22,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('db.post');
+        Schema::dropIfExists('db_post');
     }
 };
